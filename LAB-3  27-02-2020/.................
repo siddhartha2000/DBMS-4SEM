@@ -1,0 +1,44 @@
+select * from tab;
+
+
+create table student( snum int , sname varchar(20) ,major varchar(20),lvl varchar(20) , age int , primary key(snum));
+
+create table class( cname varchar(20) , meets_at timestamp ,room varchar(20),fid int,primary key(cname), foreign key(fid) references student(snum));
+
+create table enrolled( snum int, cname varchar(20), foreign key(snum) references student(snum), foreign key(cname) references class(cname));
+
+
+create table faculty( fid int, fname varchar(20), depid int ,primary key(depid),  foreign key(fid) references student(snum));
+
+drop table enrolled;
+
+drop table class;
+
+create table faculty( fid int, fname varchar(20), depid int ,primary key(depid));
+
+create table class( cname varchar(20) , meets_at timestamp ,room varchar(20),fid int,primary key(cname), foreign key(fid) references faculty(fid));
+
+drop table faculty;
+
+create table faculty( fid int, fname varchar(20), depid int ,primary key(fid));
+
+create table class( cname varchar(20) , meets_at timestamp ,room varchar(20),fid int,primary key(cname), foreign key(fid) references faculty(fid));
+
+create table enrolled( snum int, cname varchar(20), foreign key(snum) references student(snum), foreign key(cname) references class(cname));
+
+
+select * from tab;
+
+
+insert into student values(1,'a','cse','fr',18);
+insert into student values(2,'b','cse','fr',18);
+insert into student values(3,'c','cse','fr',18);
+insert into student values(4,'d','cse','fr',18);
+insert into student values(5,'e','cse','sr',18);
+insert into student values(6,'f','cse','sr',18);
+insert into student values(7,'g','cse','jr',18);
+insert into student values(8,'h','cse','jr',18);
+insert into student values(9,'i','cse','so',18);
+insert into student values(10,'j','cse','so',18);
+
+insert into faculty values(1,);
